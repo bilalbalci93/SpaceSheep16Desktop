@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
-        float VolumeControlPoint = FindObjectOfType<MusicPlayer>().GetVolumeControl();
+        volumeControlPoint = FindObjectOfType<MusicVolumeController>().GetVolumeControl();
 
     }
 
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         GameObject enemyBullet = Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity) as GameObject;
 
         enemyBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -enemyBulletSpeed);
-        AudioSource.PlayClipAtPoint(enemyShootSFX, Camera.main.transform.position, shootVolume * volumeControlPoint);
+        AudioSource.PlayClipAtPoint(enemyShootSFX, Camera.main.transform.position, shootVolume);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

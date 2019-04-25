@@ -141,7 +141,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicPlayer: {fileID: 1722255006605587038}
-  musicOnButton: {fileID: 0}
-  musicOffButton: {fileID: 0}
-  effectsOnButton: {fileID: 0}
-  effectsOffButton: {fileID: 0}

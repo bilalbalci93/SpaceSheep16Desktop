@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundaries();
-        float volumeControlPoint = FindObjectOfType<MusicPlayer>().GetVolumeControl();
+        volumeControlPoint = FindObjectOfType<MusicVolumeController>().GetVolumeControl();
     }
 
     // Update is called once per frame
@@ -59,9 +59,11 @@ public class Player : MonoBehaviour
     private void ProcessHit(DamageDealer damageDealer)
     {
         health -= damageDealer.GetDamage();
-        damageDealer.Hit();
+        damageDealer.Hit(); // this is for destroying the projectiles
+
         if (health <= 0)
         {
+            
             Die();
         }
     }
@@ -70,7 +72,7 @@ public class Player : MonoBehaviour
     {
         FindObjectOfType<Level>().LoadGameOver();
         Destroy(gameObject);
-        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume* volumeControlPoint);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume * volumeControlPoint);
     }
 
     public int GetHealth()
