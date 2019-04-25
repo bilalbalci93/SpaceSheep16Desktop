@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         GameObject enemyBullet = Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity) as GameObject;
 
         enemyBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -enemyBulletSpeed);
-        AudioSource.PlayClipAtPoint(enemyShootSFX, Camera.main.transform.position, shootVolume);
+        AudioSource.PlayClipAtPoint(enemyShootSFX, Camera.main.transform.position, shootVolume * volumeControlPoint);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
