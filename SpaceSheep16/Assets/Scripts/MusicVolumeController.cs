@@ -14,6 +14,7 @@ public class MusicVolumeController : MonoBehaviour
     [SerializeField] Button effectsOnButton;
     [SerializeField] Button effectsOffButton;
 
+
     void Awake()
     {
         SetUpSingleton();
@@ -31,6 +32,11 @@ public class MusicVolumeController : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+
+
+    }
 
     public void LoadStartMenu()
     {
