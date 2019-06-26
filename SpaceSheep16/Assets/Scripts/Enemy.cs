@@ -13,29 +13,27 @@ public class Enemy : MonoBehaviour
     float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
-    [SerializeField] GameObject enemyBulletPrefab;
+    [SerializeField] public GameObject enemyBulletPrefab;
     [SerializeField] float enemyBulletSpeed = 2f;
 
     [Header("Death VFX")]
-    [SerializeField] GameObject deathVFX;
+    [SerializeField] public GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
 
     [Header("Enemy Death SFX")]
-    [SerializeField] AudioClip deathSFX;
+    [SerializeField] public AudioClip deathSFX;
     [SerializeField] [Range(0,1)] float deathVolume = 0.75f;
 
     [Header("Enemy Shoot SFX")]
-    [SerializeField] AudioClip enemyShootSFX;
+    [SerializeField] public AudioClip enemyShootSFX;
     [SerializeField] [Range(0, 1)] float shootVolume = 0.75f;
 
-    private float volumeControlPoint;
+
 
     // Start is called before the first frame update
     void Start()
     {
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
-        volumeControlPoint = FindObjectOfType<MusicVolumeController>().GetVolumeControl();
-
     }
 
     // Update is called once per frame
@@ -61,7 +59,7 @@ public class Enemy : MonoBehaviour
         GameObject enemyBullet = Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity) as GameObject;
 
         enemyBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -enemyBulletSpeed);
-        AudioSource.PlayClipAtPoint(enemyShootSFX, Camera.main.transform.position, shootVolume * volumeControlPoint);
+        AudioSource.PlayClipAtPoint(enemyShootSFX, Camera.main.transform.position, shootVolume);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -86,6 +84,6 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity);
         Destroy(explosion, durationOfExplosion);
-        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume * volumeControlPoint);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
     }
 }

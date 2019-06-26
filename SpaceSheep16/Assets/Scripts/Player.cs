@@ -12,19 +12,17 @@ public class Player : MonoBehaviour
     [SerializeField] int health = 200;
 
     [Header("Projectile")]
-    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] public GameObject bulletPrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
 
     [Header("Player Death SFX")]
-    [SerializeField] AudioClip deathSFX;
+    [SerializeField] public AudioClip deathSFX;
     [SerializeField] [Range(0, 1)] float deathVolume = 0.75f;
 
     [Header("Player Shoot SFX")]
-    [SerializeField] AudioClip playerShootSFX;
+    [SerializeField] public AudioClip playerShootSFX;
     [SerializeField] [Range(0, 1)] float shootVolume = 0.75f;
-
-    private float volumeControlPoint;
 
 
 
@@ -39,7 +37,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundaries();
-        volumeControlPoint = FindObjectOfType<MusicVolumeController>().GetVolumeControl();
     }
 
     // Update is called once per frame
@@ -72,7 +69,7 @@ public class Player : MonoBehaviour
     {
         FindObjectOfType<Level>().LoadGameOver();
         Destroy(gameObject);
-        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume * volumeControlPoint);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
     }
 
     public int GetHealth()
@@ -100,7 +97,7 @@ public class Player : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject; // instantiate as Object to as GameObject 
                                                                                                                   //rotation can be given from here. Quaternion.identity means no rotation.
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
-            AudioSource.PlayClipAtPoint(playerShootSFX, Camera.main.transform.position, shootVolume* volumeControlPoint);
+            AudioSource.PlayClipAtPoint(playerShootSFX, Camera.main.transform.position, shootVolume);
             yield return new WaitForSeconds(projectileFiringPeriod);
         }
     }

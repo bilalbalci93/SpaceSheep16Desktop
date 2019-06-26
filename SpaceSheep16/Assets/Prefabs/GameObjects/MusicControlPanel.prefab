@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7876365092836406547}
-  - component: {fileID: 7876365092836406546}
+  - component: {fileID: 3963783608257834544}
   m_Layer: 0
   m_Name: MusicControlPanel
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7876365092836406546
+--- !u!114 &3963783608257834544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,8 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb957c1645504854383d54061f9557ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeControl: 1
-  musicOnButton: {fileID: 0}
-  musicOffButton: {fileID: 0}
+  musicSlider: {fileID: 0}
   effectsOnButton: {fileID: 0}
   effectsOffButton: {fileID: 0}
