@@ -579,7 +579,7 @@ PrefabInstance:
     - target: {fileID: 2621422393982558469, guid: 3b22d31d18e983d4a906e409db14029b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2621422393982558469, guid: 3b22d31d18e983d4a906e409db14029b,
         type: 3}
@@ -666,7 +666,7 @@ PrefabInstance:
     - target: {fileID: 4811828736794094499, guid: 1565a456814890a47942c1f2bf415183,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4811828736794094499, guid: 1565a456814890a47942c1f2bf415183,
         type: 3}
@@ -1034,6 +1034,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8232624055411882833, guid: c2099eb59e3ae4942b4ab1eebeba1bba,
+        type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2099eb59e3ae4942b4ab1eebeba1bba, type: 3}
 --- !u!1001 &8309623892448523184
@@ -1172,6 +1177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 147527533, guid: 06f93501cfcf40d4b9a240fbc18c21de, type: 3}
+      propertyPath: pauseButton
+      value: 
+      objectReference: {fileID: 4056734585143244330}
     - target: {fileID: 8796748458302386696, guid: 06f93501cfcf40d4b9a240fbc18c21de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1277,9 +1286,5 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 147527533, guid: 06f93501cfcf40d4b9a240fbc18c21de, type: 3}
-      propertyPath: pauseButton
-      value: 
-      objectReference: {fileID: 4056734585143244330}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06f93501cfcf40d4b9a240fbc18c21de, type: 3}

@@ -112,7 +112,9 @@ public class Player : MonoBehaviour
 
         transform.position = new Vector2(newXPos, newYPos);
     }
-    
+
+    public SpriteRenderer renderer;
+
     private void SetUpMoveBoundaries()
     {
         Camera gameCamera = Camera.main;
