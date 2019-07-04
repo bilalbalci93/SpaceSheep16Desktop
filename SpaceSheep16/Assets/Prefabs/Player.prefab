@@ -102,7 +102,7 @@ MonoBehaviour:
   projectileSpeed: 20
   projectileFiringPeriod: 0.1
   deathSFX: {fileID: 8300000, guid: 89f7a4a436ca20e419f4f68f907e6083, type: 3}
-  deathVolume: 0.75
+  deathVolume: 0.2
   playerShootSFX: {fileID: 8300000, guid: 1c0f42b6892cccf4ab1c015e63169d97, type: 3}
   shootVolume: 0.1
 --- !u!60 &5521868238689223780

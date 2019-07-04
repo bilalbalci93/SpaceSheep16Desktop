@@ -121,7 +121,7 @@ MonoBehaviour:
   deathSFX: {fileID: 8300000, guid: 675cfd1e16bacea428d2fd0205520c07, type: 3}
   deathVolume: 0.75
   enemyShootSFX: {fileID: 8300000, guid: 83d0d01623602f3468b7b1460246c014, type: 3}
-  shootVolume: 0.5
+  shootVolume: 0.3
 --- !u!58 &8369007457078711444
 CircleCollider2D:
   m_ObjectHideFlags: 0
