@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -102,16 +103,58 @@ public class Player : MonoBehaviour
         }
     }
 
+    [Header("Smooth Dumping")]
+    [SerializeField] private bool _useSmoothEnd;
+    private Single _moveX;
+    private Single _moveY;
+    private Single _prevMoveX;
+    private Single _prevMoveY;
+    [SerializeField] float _dumpScaler = 1;
+    [SerializeField] private float _dumpTime = 1;
+    [SerializeField] private Ease _dumpEase = Ease.Linear;
     private void Move()
     {
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+        _moveX = Input.GetAxis("Horizontal");
+        _moveY = Input.GetAxis("Vertical");
+
+        if (_moveX != 0 || _moveY != 0)
+            OnMoveInput();
+        else if (_useSmoothEnd && (_prevMoveX != 0 || _prevMoveY != 0))
+            OnMoveInputExit();
+    }
+
+    private void OnMoveInput()
+    {
+        DOTween.KillAll(false);
+        
+        var deltaX = _moveX * Time.deltaTime * moveSpeed;
+        var deltaY = _moveY * Time.deltaTime * moveSpeed;
 
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
 
         transform.position = new Vector2(newXPos, newYPos);
+        
+        _prevMoveX = _moveX;
+        _prevMoveY = _moveY;
     }
+    
+    
+    private void OnMoveInputExit()
+    {
+        DOTween.KillAll(false);
+        
+        var deltaX = _prevMoveX * _dumpScaler;
+        var deltaY = _prevMoveY * _dumpScaler;
+
+        Vector3 currentPos = transform.position;
+        Vector3 nextPos = new Vector3(currentPos.x + deltaX, currentPos.y + deltaY);
+        transform.DOMove(nextPos, _dumpTime).SetEase(_dumpEase);
+
+        _prevMoveX = 0;
+        _prevMoveY = 0;
+    }
+    
 
     public SpriteRenderer renderer;
 

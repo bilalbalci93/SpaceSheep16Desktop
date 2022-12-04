@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemyBulletSpeed = 2f;
 
     [Header("Death VFX")]
+    [SerializeField] private bool _showVFX = true;
     [SerializeField] public GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
 
@@ -82,8 +83,12 @@ public class Enemy : MonoBehaviour
     {
         FindObjectOfType<GameSession>().AddToScore(scoreValue);
         Destroy(gameObject);
-        GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity);
-        Destroy(explosion, durationOfExplosion);
+        if (_showVFX)
+        {
+            GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity);
+            Destroy(explosion, durationOfExplosion);
+        }
+        
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
     }
 }
