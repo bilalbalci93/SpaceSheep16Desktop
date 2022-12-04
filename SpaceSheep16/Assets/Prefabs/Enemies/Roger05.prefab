@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 139687665578301296}
   - component: {fileID: 1461860548149193760}
   m_Layer: 9
-  m_Name: Roger03
+  m_Name: Roger05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,8 +116,8 @@ MonoBehaviour:
   enemyBulletPrefab: {fileID: 8289436779319262539, guid: cae4f7093cf3207488537c9143022a14,
     type: 3}
   enemyBulletSpeed: 6
-  _showVFX: 0
-  _scaleUpOnDestroy: 0
+  _showVFX: 1
+  _scaleUpOnDestroy: 1
   deathVFX: {fileID: 8973120841180842829, guid: 8e8aba8780f3e7244874bed1783b92f2,
     type: 3}
   durationOfExplosion: 1

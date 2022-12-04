@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f; // might be different for vertical and horizontal. Top of the screen might be banned for player movement
     [SerializeField] int health = 200;
+    [SerializeField] int damage = 100;
+    [SerializeField] private bool _wobble = false;
 
     [Header("Projectile")]
     [SerializeField] public GameObject bulletPrefab;
@@ -49,21 +51,30 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-        if(!damageDealer) { return; } // if there is no damage dealer then dont do further and return. It is for null error.
-        ProcessHit(damageDealer);
+        ProcessHit();
     }
 
-    private void ProcessHit(DamageDealer damageDealer)
+    private void ProcessHit()
     {
-        health -= damageDealer.GetDamage();
-        damageDealer.Hit(); // this is for destroying the projectiles
-
+        if(health <= 0)
+            return;
+        
+        if(_wobble) Wobble();
+        
+        health -= damage;
         if (health <= 0)
-        {
-            
             Die();
-        }
+    }
+
+    private void Wobble()
+    {
+        transform.DOScale(new Vector3(1.5f, 0.5f, 1), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            transform.DOScale(new Vector3(0.5f, 1.5f, 1), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                transform.DOScale(new Vector3(1f, 1f, 1), 0.1f).SetEase(Ease.Linear);
+            });
+        });
     }
 
     private void Die()
@@ -154,9 +165,6 @@ public class Player : MonoBehaviour
         _prevMoveX = 0;
         _prevMoveY = 0;
     }
-    
-
-    public SpriteRenderer renderer;
 
     private void SetUpMoveBoundaries()
     {

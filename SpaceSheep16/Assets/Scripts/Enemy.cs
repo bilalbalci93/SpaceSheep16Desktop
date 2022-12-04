@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -8,6 +9,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy Stats")]
     [SerializeField] float health = 100f;
     [SerializeField] int scoreValue = 150;
+    [SerializeField] int damage = 100;
 
     [Header("Shooting")]
     float shotCounter;
@@ -18,6 +20,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Death VFX")]
     [SerializeField] private bool _showVFX = true;
+    [SerializeField] private bool _scaleUpOnDestroy = false;
     [SerializeField] public GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
 
@@ -65,30 +68,53 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-        ProcessHit(damageDealer);
+        ProcessHit();
     }
 
-    private void ProcessHit(DamageDealer damageDealer)
+    private void ProcessHit()
     {
-        health -= damageDealer.GetDamage();
-        damageDealer.Hit();
+        if(health <= 0)
+            return;
+        
+        health -= damage;
         if (health <= 0)
-        {
             Die();
-        }
     }
 
     private void Die()
     {
+        GetComponent<CircleCollider2D>().enabled = false;
+        health = -1000;
+        
         FindObjectOfType<GameSession>().AddToScore(scoreValue);
-        Destroy(gameObject);
-        if (_showVFX)
+
+        if (_scaleUpOnDestroy)
+            ScaleUpAndDie();
+        else
         {
-            GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity);
-            Destroy(explosion, durationOfExplosion);
+            if (_showVFX)
+            {
+                GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity);
+                Destroy(explosion, durationOfExplosion);
+            }
+            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
+            Destroy(gameObject);
         }
         
-        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
+    }
+
+    private void ScaleUpAndDie()
+    {
+        Vector3 bigScale = new Vector3(2, 2, 2);
+        transform.DOScale(bigScale, 0.5f).From().SetEase(Ease.OutCirc).OnKill(() =>
+        {
+            if (_showVFX)
+            {
+                GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity);
+                Destroy(explosion, durationOfExplosion);
+            }
+            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
+            Destroy(gameObject);
+        });
     }
 }

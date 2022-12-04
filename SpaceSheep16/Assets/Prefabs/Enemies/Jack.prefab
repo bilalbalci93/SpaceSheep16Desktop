@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4353245473023920878}
   - component: {fileID: 8369007457078711444}
   - component: {fileID: 3997662224717466161}
-  - component: {fileID: 7000263525961370908}
   m_Layer: 9
   m_Name: Jack
   m_TagString: Untagged
@@ -61,6 +60,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -110,11 +110,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 300
   scoreValue: 150
+  damage: 100
   minTimeBetweenShots: 0.4
   maxTimeBetweenShots: 2.5
   enemyBulletPrefab: {fileID: 8289436779319262539, guid: 3be369c1627567448906272a79e52fe1,
     type: 3}
   enemyBulletSpeed: 8
+  _showVFX: 1
+  _scaleUpOnDestroy: 0
   deathVFX: {fileID: 8973120841180842829, guid: 8e8aba8780f3e7244874bed1783b92f2,
     type: 3}
   durationOfExplosion: 1
@@ -159,16 +162,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7000263525961370908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8673205275738802839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03c5626c51e0654fb63a3aea7dafd8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 300
