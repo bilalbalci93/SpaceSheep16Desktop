@@ -20,9 +20,13 @@ MonoBehaviour:
     type: 3}
   enemyPrefab04: {fileID: 6582180835624772503, guid: e6918d41586ea1f46a61e87826b82f67,
     type: 3}
-  enemyPrefab05: {fileID: 6582180835624772503, guid: 05e928e0fc081334ea4862e19f5fd27c,
+  enemyPrefab05: {fileID: 6582180835624772503, guid: abbeaa022ee59824fad7636d5e307853,
     type: 3}
-  enemyPrefab06: {fileID: 6582180835624772503, guid: 6351157e808449a4f9d6e926e7c69223,
+  enemyPrefab06: {fileID: 6582180835624772503, guid: 499a4bb6e4bdcb041aad71b806dfb748,
+    type: 3}
+  enemyPrefab07: {fileID: 6582180835624772503, guid: 05e928e0fc081334ea4862e19f5fd27c,
+    type: 3}
+  enemyPrefab08: {fileID: 6582180835624772503, guid: 6351157e808449a4f9d6e926e7c69223,
     type: 3}
   pathPrefab: {fileID: 3969646217735436665, guid: 2f8f85757320d8d4fad57cedad1752dd,
     type: 3}

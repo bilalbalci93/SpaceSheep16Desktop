@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] int health = 200;
     [SerializeField] int damage = 100;
     [SerializeField] private bool _wobble = false;
+    private Tween _moveOutTween;
 
     [Header("Projectile")]
     [SerializeField] public GameObject bulletPrefab;
@@ -27,7 +28,21 @@ public class Player : MonoBehaviour
     [SerializeField] public AudioClip playerShootSFX;
     [SerializeField] [Range(0, 1)] float shootVolume = 0.75f;
 
+    [Header("Color On Hit")]
+    [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private float _colorChangeTime;
+    [SerializeField] private Color _hitColor;
+    [SerializeField] private bool _colorOnHit;
+    
+    [Header("Bounce On Hit")]
+    [SerializeField] private bool _bounceOnHit;
+    [SerializeField] private float _bounceDistance;
+    [SerializeField] private float _bounceTime;
+    [SerializeField] private Ease _bounceEase;
+    private Tween _bounceTween;
 
+    [Header("ScreenShake")]
+    [SerializeField] private bool _isShakeOpen;
 
     Coroutine firingCoroutine;
 
@@ -59,13 +74,23 @@ public class Player : MonoBehaviour
         if(health <= 0)
             return;
         
+        if(_bounceOnHit) BounceOnHit();
         if(_wobble) Wobble();
+        if(_colorOnHit) ColorOnHit();
+        if(_isShakeOpen) ScreenShake.Instance.PlayerGetHitEffect();
         
         health -= damage;
         if (health <= 0)
             Die();
     }
 
+    private void BounceOnHit()
+    {
+        _bounceTween.Kill(false);
+        Vector3 nextPos = transform.position + Vector3.down * _bounceDistance;
+        _bounceTween = transform.DOMove(nextPos, _bounceTime).SetEase(_bounceEase);
+    }
+    
     private void Wobble()
     {
         transform.DOScale(new Vector3(1.5f, 0.5f, 1), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
@@ -74,6 +99,14 @@ public class Player : MonoBehaviour
             {
                 transform.DOScale(new Vector3(1f, 1f, 1), 0.1f).SetEase(Ease.Linear);
             });
+        });
+    }
+
+    private void ColorOnHit()
+    {
+        _renderer.DOColor(_hitColor, _colorChangeTime * 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            _renderer.DOColor(Color.white, _colorChangeTime * 0.5f).SetEase(Ease.Linear);
         });
     }
 
@@ -118,8 +151,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _useSmoothEnd;
     private Single _moveX;
     private Single _moveY;
-    private Single _prevMoveX;
-    private Single _prevMoveY;
+    private Vector2 _moveDirection;
     [SerializeField] float _dumpScaler = 1;
     [SerializeField] private float _dumpTime = 1;
     [SerializeField] private Ease _dumpEase = Ease.Linear;
@@ -130,13 +162,14 @@ public class Player : MonoBehaviour
 
         if (_moveX != 0 || _moveY != 0)
             OnMoveInput();
-        else if (_useSmoothEnd && (_prevMoveX != 0 || _prevMoveY != 0))
+        else if (_useSmoothEnd && _moveDirection.magnitude > 0)
             OnMoveInputExit();
     }
 
     private void OnMoveInput()
     {
-        DOTween.KillAll(false);
+        _bounceTween.Kill(false);
+        _moveOutTween.Kill(false);
         
         var deltaX = _moveX * Time.deltaTime * moveSpeed;
         var deltaY = _moveY * Time.deltaTime * moveSpeed;
@@ -145,25 +178,23 @@ public class Player : MonoBehaviour
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
 
         transform.position = new Vector2(newXPos, newYPos);
-        
-        _prevMoveX = _moveX;
-        _prevMoveY = _moveY;
+        _moveDirection = new Vector2(deltaX, deltaY);
+        _moveDirection.Normalize();
     }
     
     
     private void OnMoveInputExit()
     {
-        DOTween.KillAll(false);
+        //_bounceTween.Kill(false);
+        _moveOutTween.Kill(false);
         
-        var deltaX = _prevMoveX * _dumpScaler;
-        var deltaY = _prevMoveY * _dumpScaler;
+        _moveDirection *= _dumpScaler;
 
         Vector3 currentPos = transform.position;
-        Vector3 nextPos = new Vector3(currentPos.x + deltaX, currentPos.y + deltaY);
-        transform.DOMove(nextPos, _dumpTime).SetEase(_dumpEase);
+        Vector3 nextPos = new Vector3(currentPos.x + _moveDirection.x, currentPos.y + _moveDirection.y);
+        _moveOutTween = transform.DOMove(nextPos, _dumpTime).SetEase(_dumpEase);
 
-        _prevMoveX = 0;
-        _prevMoveY = 0;
+        _moveDirection = Vector2.zero;
     }
 
     private void SetUpMoveBoundaries()

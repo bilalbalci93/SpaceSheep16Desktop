@@ -18,11 +18,27 @@ public class Enemy : MonoBehaviour
     [SerializeField] public GameObject enemyBulletPrefab;
     [SerializeField] float enemyBulletSpeed = 2f;
 
+    [Header("Juice")]
+    [SerializeField] private bool _scaleUpOnDestroy;
+    [SerializeField] private bool _showVFX;
+    
+    [Header("Color On Hit")]
+    [SerializeField] private bool _changeColorOnHit;
+    [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private float _colorChangeTime;
+    [SerializeField] private Color _hitColor;
+    
+    [Header("Bounce On Hit")]
+    [SerializeField] private bool _bounceOnHit;
+    [SerializeField] private float _bounceDistance;
+    [SerializeField] private float _bounceTime;
+    [SerializeField] private Ease _bounceEase;
+    private Tween _bounceTween;
+    
     [Header("Death VFX")]
-    [SerializeField] private bool _showVFX = true;
-    [SerializeField] private bool _scaleUpOnDestroy = false;
     [SerializeField] public GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
+    [SerializeField] private bool _shakeCamera;
 
     [Header("Enemy Death SFX")]
     [SerializeField] public AudioClip deathSFX;
@@ -75,12 +91,30 @@ public class Enemy : MonoBehaviour
     {
         if(health <= 0)
             return;
+
+        if(_bounceOnHit) BounceOnHit();
+        if (_changeColorOnHit) ColorOnHit();
         
         health -= damage;
         if (health <= 0)
             Die();
     }
-
+    
+    private void BounceOnHit()
+    {
+        _bounceTween.Kill(false);
+        Vector3 nextPos = transform.position + Vector3.up * _bounceDistance;
+        _bounceTween = transform.DOMove(nextPos, _bounceTime).SetEase(_bounceEase);
+    }
+    
+    private void ColorOnHit()
+    {
+        _renderer.DOColor(_hitColor, _colorChangeTime * 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            _renderer.DOColor(Color.white, _colorChangeTime * 0.5f).SetEase(Ease.Linear);
+        });
+    }
+    
     private void Die()
     {
         GetComponent<CircleCollider2D>().enabled = false;
@@ -96,6 +130,8 @@ public class Enemy : MonoBehaviour
             {
                 GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity);
                 Destroy(explosion, durationOfExplosion);
+                
+                if(_shakeCamera) ScreenShake.Instance.EnemyHitShakeEffect();
             }
             AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
             Destroy(gameObject);
@@ -112,6 +148,8 @@ public class Enemy : MonoBehaviour
             {
                 GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity);
                 Destroy(explosion, durationOfExplosion);
+                
+                if(_shakeCamera) ScreenShake.Instance.EnemyHitShakeEffect();
             }
             AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
             Destroy(gameObject);
