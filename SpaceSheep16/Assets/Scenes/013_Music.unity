@@ -748,13 +748,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   padding: 1
-  health: 5000
+  health: 1000
   damage: 100
   _wobble: 1
   bulletPrefab: {fileID: 8156120788325199581, guid: 4601ad8eb7255e8458a184f5d0df52fd,
     type: 3}
   projectileSpeed: 20
   projectileFiringPeriod: 0.1
+  _bulletSpawnOffset: {x: 0, y: 0, z: 0}
   deathSFX: {fileID: 8300000, guid: 89f7a4a436ca20e419f4f68f907e6083, type: 3}
   deathVolume: 0.2
   playerShootSFX: {fileID: 8300000, guid: 1c0f42b6892cccf4ab1c015e63169d97, type: 3}
