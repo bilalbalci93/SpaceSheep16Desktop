@@ -10,7 +10,7 @@ public class GameSession : MonoBehaviour
 
     private void Awake()
     {
-        SetUpSingleton();
+        //SetUpSingleton();
     }
 
     private void SetUpSingleton()
