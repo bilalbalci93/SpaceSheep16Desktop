@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de5f1120ac07f14589062a47534149a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabType: 5
+  enemyPrefabType: 4
   waveConfigs:
   - {fileID: 11400000, guid: 531dbc8e0b7c3ce4da396d7388646376, type: 2}
   - {fileID: 11400000, guid: 653e570cd3084c0499139c51d03ac794, type: 2}

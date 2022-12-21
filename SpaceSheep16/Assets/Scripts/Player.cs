@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
+    [SerializeField] private Vector3 _bulletSpawnOffset;
 
     [Header("Player Death SFX")]
     [SerializeField] public AudioClip deathSFX;
@@ -139,7 +140,7 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject; // instantiate as Object to as GameObject 
+            GameObject bullet = Instantiate(bulletPrefab, transform.position + _bulletSpawnOffset, Quaternion.identity) as GameObject; // instantiate as Object to as GameObject 
                                                                                                                   //rotation can be given from here. Quaternion.identity means no rotation.
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
             AudioSource.PlayClipAtPoint(playerShootSFX, Camera.main.transform.position, shootVolume);
