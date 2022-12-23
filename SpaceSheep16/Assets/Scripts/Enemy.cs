@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] [Range(0,1)] float deathVolume = 0.75f;
 
     [Header("Enemy Shoot SFX")]
+    [SerializeField] public bool _isSfxOn;
     [SerializeField] public AudioClip enemyShootSFX;
     [SerializeField] [Range(0, 1)] float shootVolume = 0.75f;
 
@@ -79,7 +80,7 @@ public class Enemy : MonoBehaviour
         GameObject enemyBullet = Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity) as GameObject;
 
         enemyBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -enemyBulletSpeed);
-        AudioSource.PlayClipAtPoint(enemyShootSFX, Camera.main.transform.position, shootVolume);
+        if(_isSfxOn) AudioSource.PlayClipAtPoint(enemyShootSFX, Camera.main.transform.position, shootVolume);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -133,7 +134,7 @@ public class Enemy : MonoBehaviour
                 
                 if(_shakeCamera) ScreenShake.Instance.EnemyHitShakeEffect();
             }
-            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
+            if(_isSfxOn) AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
             Destroy(gameObject);
         }
         
@@ -151,7 +152,7 @@ public class Enemy : MonoBehaviour
                 
                 if(_shakeCamera) ScreenShake.Instance.EnemyHitShakeEffect();
             }
-            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
+            if(_isSfxOn) AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
             Destroy(gameObject);
         });
     }

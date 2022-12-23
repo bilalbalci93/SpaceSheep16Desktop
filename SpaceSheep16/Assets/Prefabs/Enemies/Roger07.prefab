@@ -133,8 +133,10 @@ MonoBehaviour:
   deathVFX: {fileID: 8973120841180842829, guid: 8e8aba8780f3e7244874bed1783b92f2,
     type: 3}
   durationOfExplosion: 1
+  _shakeCamera: 0
   deathSFX: {fileID: 8300000, guid: 675cfd1e16bacea428d2fd0205520c07, type: 3}
   deathVolume: 0.75
+  _isSfxOn: 1
   enemyShootSFX: {fileID: 8300000, guid: 83d0d01623602f3468b7b1460246c014, type: 3}
   shootVolume: 0.3
 --- !u!58 &139687665578301296

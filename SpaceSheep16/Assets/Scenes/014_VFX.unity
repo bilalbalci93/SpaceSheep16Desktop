@@ -833,6 +833,7 @@ MonoBehaviour:
   health: 1000
   damage: 100
   _wobble: 1
+  _isSfxOn: 1
   bulletPrefab: {fileID: 8156120788325199581, guid: 4601ad8eb7255e8458a184f5d0df52fd,
     type: 3}
   projectileSpeed: 20

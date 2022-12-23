@@ -136,6 +136,7 @@ MonoBehaviour:
   _shakeCamera: 1
   deathSFX: {fileID: 8300000, guid: 675cfd1e16bacea428d2fd0205520c07, type: 3}
   deathVolume: 0.75
+  _isSfxOn: 1
   enemyShootSFX: {fileID: 8300000, guid: 83d0d01623602f3468b7b1460246c014, type: 3}
   shootVolume: 0.3
 --- !u!58 &139687665578301296

@@ -213,7 +213,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -221,14 +220,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -400,7 +391,6 @@ GameObject:
   - component: {fileID: 1749527552}
   - component: {fileID: 1749527551}
   - component: {fileID: 1749527553}
-  - component: {fileID: 2877620358376387735}
   - component: {fileID: 1749527554}
   m_Layer: 8
   m_Name: Player
@@ -493,6 +483,7 @@ MonoBehaviour:
   health: 1000
   damage: 100
   _wobble: 0
+  _isSfxOn: 0
   bulletPrefab: {fileID: 8156120788325199581, guid: e0b35e4381dbeec439183eee4b125e69,
     type: 3}
   projectileSpeed: 20
@@ -830,19 +821,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bf819c5f42789a4e9342f8cec01110a, type: 3}
---- !u!114 &2877620358376387735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1749527550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03c5626c51e0654fb63a3aea7dafd8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 100
 --- !u!114 &4056734585143244330 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4056734585143244330, guid: 2bb8044edd6224040a48f067ccbeec2b,

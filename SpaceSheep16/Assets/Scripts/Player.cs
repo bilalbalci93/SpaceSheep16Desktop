@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private Tween _moveOutTween;
 
     [Header("Projectile")]
+    [SerializeField] private bool _isSfxOn;
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
@@ -143,7 +144,7 @@ public class Player : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, transform.position + _bulletSpawnOffset, Quaternion.identity) as GameObject; // instantiate as Object to as GameObject 
                                                                                                                   //rotation can be given from here. Quaternion.identity means no rotation.
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
-            AudioSource.PlayClipAtPoint(playerShootSFX, Camera.main.transform.position, shootVolume);
+            if(_isSfxOn) AudioSource.PlayClipAtPoint(playerShootSFX, Camera.main.transform.position, shootVolume);
             yield return new WaitForSeconds(projectileFiringPeriod);
         }
     }
