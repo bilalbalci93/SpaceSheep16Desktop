@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 139687665578301296}
   - component: {fileID: 1461860548149193760}
   m_Layer: 9
-  m_Name: Roger02
+  m_Name: RogerDry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   _shakeCamera: 0
   deathSFX: {fileID: 8300000, guid: 675cfd1e16bacea428d2fd0205520c07, type: 3}
   deathVolume: 0.75
-  _isSfxOn: 0
+  _isSfxOn: 1
   enemyShootSFX: {fileID: 8300000, guid: 83d0d01623602f3468b7b1460246c014, type: 3}
   shootVolume: 0.3
 --- !u!58 &139687665578301296
