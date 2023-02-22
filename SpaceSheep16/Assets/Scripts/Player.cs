@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     [Header("Projectile")]
     [SerializeField] private bool _isSfxOn;
+    [SerializeField] private bool _autoAttack = false;
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
@@ -57,6 +58,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundaries();
+
+        if (_autoAttack)
+        {
+            firingCoroutine = StartCoroutine(FireContinuously());
+        }
     }
 
     // Update is called once per frame
@@ -126,11 +132,11 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !_autoAttack)
         {
             firingCoroutine = StartCoroutine(FireContinuously());
         }
-        if(Input.GetButtonUp("Fire1"))
+        if(Input.GetButtonUp("Fire1") && !_autoAttack)
         {
             StopCoroutine(firingCoroutine);
         }

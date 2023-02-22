@@ -494,6 +494,7 @@ MonoBehaviour:
   damage: 100
   _wobble: 0
   _isSfxOn: 1
+  _autoAttack: 1
   bulletPrefab: {fileID: 8156120788325199581, guid: fea401802de374af1afce47ff770ad64,
     type: 3}
   projectileSpeed: 20
