@@ -106,9 +106,9 @@ public class Player : MonoBehaviour
     
     private void Wobble()
     {
-        transform.DOScale(new Vector3(1.5f, 0.5f, 1), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
+        transform.DOScale(new Vector3(_spriteScale.x*1.5f, _spriteScale.y*0.5f, 1), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            transform.DOScale(new Vector3(0.5f, 1.5f, 1), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
+            transform.DOScale(new Vector3(_spriteScale.x*0.5f, _spriteScale.y*1.5f, 1), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
             {
                 transform.DOScale(_spriteScale, 0.1f).SetEase(Ease.Linear);
             });

@@ -26,7 +26,7 @@ public class ScreenShake : MonoBehaviour
 
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _playerTransform;
-    [SerializeField] private float _slowDownTime = 0.5f;
+    [SerializeField] private float _slowDownTime = 0.3f;
     [SerializeField] private float _slowTimeScale = 0.2f;
 
     private Vector3 _defaultCameraPos;
@@ -39,7 +39,7 @@ public class ScreenShake : MonoBehaviour
     public void PlayerGetHitEffect()
     {
         StartCoroutine(SlowDown());
-        _camera.transform.DOShakePosition(_slowDownTime, 1f);
+        _camera.transform.DOShakePosition(_slowDownTime, 0.8f);
     }
 
     private IEnumerator SlowDown()
