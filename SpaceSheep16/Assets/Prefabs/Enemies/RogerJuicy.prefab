@@ -135,6 +135,7 @@ MonoBehaviour:
     type: 3}
   durationOfExplosion: 1
   _shakeCamera: 1
+  _canvasShake: 1
   deathSFX: {fileID: 8300000, guid: 675cfd1e16bacea428d2fd0205520c07, type: 3}
   deathVolume: 0.75
   _isSfxOn: 1

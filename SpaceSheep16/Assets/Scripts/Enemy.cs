@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
     [SerializeField] private bool _shakeCamera;
+    [SerializeField] private bool _canvasShake;
 
     [Header("Enemy Death SFX")]
     [SerializeField] public AudioClip deathSFX;
@@ -134,6 +135,7 @@ public class Enemy : MonoBehaviour
                 Destroy(explosion, durationOfExplosion);
                 
                 if(_shakeCamera) ScreenShake.Instance.EnemyHitShakeEffect();
+                if(_canvasShake) CanvasShake.Instance.CanvasGetShake();
             }
             if(_isSfxOn) AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
             Destroy(gameObject);
