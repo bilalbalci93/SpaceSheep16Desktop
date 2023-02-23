@@ -490,6 +490,8 @@ MonoBehaviour:
   health: 1000
   damage: 100
   _wobble: 1
+  _isSfxOn: 0
+  _autoAttack: 0
   bulletPrefab: {fileID: 8156120788325199581, guid: 4601ad8eb7255e8458a184f5d0df52fd,
     type: 3}
   projectileSpeed: 20
@@ -502,6 +504,7 @@ MonoBehaviour:
   _renderer: {fileID: 1749527551}
   _colorChangeTime: 0.2
   _hitColor: {r: 1, g: 0, b: 0, a: 1}
+  _defaultColor: {r: 1, g: 1, b: 1, a: 1}
   _colorOnHit: 1
   _bounceOnHit: 1
   _bounceDistance: 1

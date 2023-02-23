@@ -123,13 +123,13 @@ MonoBehaviour:
   _scaleUpOnDestroy: 1
   _showVFX: 1
   _changeColorOnHit: 1
-  _renderer: {fileID: 0}
-  _colorChangeTime: 0
-  _hitColor: {r: 0, g: 0, b: 0, a: 0}
+  _renderer: {fileID: 9188802130816543334}
+  _colorChangeTime: 0.2
+  _hitColor: {r: 1, g: 0, b: 0, a: 1}
   _bounceOnHit: 1
-  _bounceDistance: 0
-  _bounceTime: 0
-  _bounceEase: 0
+  _bounceDistance: 0.3
+  _bounceTime: 0.2
+  _bounceEase: 9
   deathVFX: {fileID: 8973120841180842829, guid: 8e8aba8780f3e7244874bed1783b92f2,
     type: 3}
   durationOfExplosion: 1

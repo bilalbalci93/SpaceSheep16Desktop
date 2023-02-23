@@ -492,7 +492,7 @@ MonoBehaviour:
   padding: 1
   health: 1000
   damage: 100
-  _wobble: 0
+  _wobble: 1
   _isSfxOn: 1
   _autoAttack: 1
   bulletPrefab: {fileID: 8156120788325199581, guid: fea401802de374af1afce47ff770ad64,
@@ -504,14 +504,15 @@ MonoBehaviour:
   deathVolume: 0.2
   playerShootSFX: {fileID: 8300000, guid: 1c0f42b6892cccf4ab1c015e63169d97, type: 3}
   shootVolume: 0.1
-  _renderer: {fileID: 0}
-  _colorChangeTime: 0
-  _hitColor: {r: 0, g: 0, b: 0, a: 0}
-  _colorOnHit: 0
-  _bounceOnHit: 0
-  _bounceDistance: 0
-  _bounceTime: 0
-  _bounceEase: 0
+  _renderer: {fileID: 1749527551}
+  _colorChangeTime: 0.2
+  _hitColor: {r: 1, g: 0, b: 0, a: 1}
+  _defaultColor: {r: 0, g: 0.6156863, b: 0.7372549, a: 1}
+  _colorOnHit: 1
+  _bounceOnHit: 1
+  _bounceDistance: 0.3
+  _bounceTime: 0.2
+  _bounceEase: 27
   _isShakeOpen: 1
   _useSmoothEnd: 1
   _dumpScaler: 0.2

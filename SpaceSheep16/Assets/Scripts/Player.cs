@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private float _colorChangeTime;
     [SerializeField] private Color _hitColor;
+    [SerializeField] private Color _defaultColor;
     [SerializeField] private bool _colorOnHit;
     
     [Header("Bounce On Hit")]
@@ -114,7 +115,7 @@ public class Player : MonoBehaviour
     {
         _renderer.DOColor(_hitColor, _colorChangeTime * 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            _renderer.DOColor(Color.white, _colorChangeTime * 0.5f).SetEase(Ease.Linear);
+            _renderer.DOColor(_defaultColor, _colorChangeTime * 0.5f).SetEase(Ease.Linear);
         });
     }
 
