@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _wobble = false;
     private Tween _moveOutTween;
 
+    private Vector3 _spriteScale;
+
     [Header("Projectile")]
     [SerializeField] private bool _isSfxOn;
     [SerializeField] private bool _autoAttack = false;
@@ -64,6 +66,8 @@ public class Player : MonoBehaviour
         {
             firingCoroutine = StartCoroutine(FireContinuously());
         }
+
+        _spriteScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -106,7 +110,7 @@ public class Player : MonoBehaviour
         {
             transform.DOScale(new Vector3(0.5f, 1.5f, 1), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
             {
-                transform.DOScale(new Vector3(1f, 1f, 1), 0.1f).SetEase(Ease.Linear);
+                transform.DOScale(_spriteScale, 0.1f).SetEase(Ease.Linear);
             });
         });
     }
