@@ -135,7 +135,6 @@ public class Enemy : MonoBehaviour
                 Destroy(explosion, durationOfExplosion);
                 
                 if(_shakeCamera) ScreenShake.Instance.EnemyHitShakeEffect();
-                if(_canvasShake) CanvasShake.Instance.CanvasGetShake();
             }
             if(_isSfxOn) AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathVolume);
             Destroy(gameObject);
