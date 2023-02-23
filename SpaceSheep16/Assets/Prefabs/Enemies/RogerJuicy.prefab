@@ -125,7 +125,8 @@ MonoBehaviour:
   _changeColorOnHit: 1
   _renderer: {fileID: 9188802130816543334}
   _colorChangeTime: 0.2
-  _hitColor: {r: 1, g: 0, b: 0, a: 1}
+  _hitColor: {r: 0.2830189, g: 0.014873735, b: 0.009344969, a: 1}
+  _defaultColor: {r: 0.8862745, g: 0.27450982, b: 0, a: 1}
   _bounceOnHit: 1
   _bounceDistance: 0.3
   _bounceTime: 0.2

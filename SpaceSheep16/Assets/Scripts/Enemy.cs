@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private float _colorChangeTime;
     [SerializeField] private Color _hitColor;
+    [SerializeField] private Color _defaultColor;
     
     [Header("Bounce On Hit")]
     [SerializeField] private bool _bounceOnHit;
@@ -112,7 +113,7 @@ public class Enemy : MonoBehaviour
     {
         _renderer.DOColor(_hitColor, _colorChangeTime * 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            _renderer.DOColor(Color.white, _colorChangeTime * 0.5f).SetEase(Ease.Linear);
+            _renderer.DOColor(_defaultColor, _colorChangeTime * 0.5f).SetEase(Ease.Linear);
         });
     }
     

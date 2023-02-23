@@ -15,6 +15,8 @@ public class WaveConfig : ScriptableObject
     [SerializeField] public GameObject enemyPrefab07;
     [SerializeField] public GameObject enemyPrefab08;
     [SerializeField] public GameObject enemyPrefab09;
+    [SerializeField] public GameObject enemyPrefab10;
+    [SerializeField] public GameObject enemyPrefab11;
     [SerializeField] public GameObject pathPrefab;
     [SerializeField] float timeBetweenSpawns = 0.5f;
     [SerializeField] float spawnRandomFactor = 0.3f;
@@ -49,11 +51,16 @@ public class WaveConfig : ScriptableObject
             case EnemyPrefabType.ShakeCamera:
                 return enemyPrefab08;
                 break;
-            case EnemyPrefabType.PersonalizedSprites:
+            case EnemyPrefabType.DrySquare:
                 return enemyPrefab09;
             break;
+            case EnemyPrefabType.JuicySquare:
+                return enemyPrefab10;
+            break;
+            case EnemyPrefabType.PersonalizedSprites:
+                return enemyPrefab11;
             default:
-                return enemyPrefab09;
+                return enemyPrefab11;
             break;
         }
         
@@ -90,5 +97,7 @@ public enum EnemyPrefabType
     BounceOnHit,
     ShowVFX,
     ShakeCamera,
+    DrySquare,
+    JuicySquare,
     PersonalizedSprites
 }

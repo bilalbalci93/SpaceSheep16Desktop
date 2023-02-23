@@ -28,6 +28,11 @@ MonoBehaviour:
     type: 3}
   enemyPrefab08: {fileID: 6582180835624772503, guid: 6351157e808449a4f9d6e926e7c69223,
     type: 3}
+  enemyPrefab09: {fileID: 6582180835624772503, guid: c0a9045413da84dceada6fc91c68ac8a,
+    type: 3}
+  enemyPrefab10: {fileID: 6582180835624772503, guid: a73ac8aed75ac44a29b7537c42a34cc4,
+    type: 3}
+  enemyPrefab11: {fileID: 0}
   pathPrefab: {fileID: 191056201864763998, guid: f42555661adc2b84da3cea913722230c,
     type: 3}
   timeBetweenSpawns: 0.5
