@@ -488,9 +488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdcb0fa2e541a4735849f241a13c8332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDuration: 0.4
-  shakeMagnitude: 0.1
-  _canvasTransform: {fileID: 345749643}
 --- !u!4 &1253909497
 Transform:
   m_ObjectHideFlags: 0

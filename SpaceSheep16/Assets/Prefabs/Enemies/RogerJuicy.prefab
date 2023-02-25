@@ -131,7 +131,7 @@ MonoBehaviour:
   _bounceDistance: 0.3
   _bounceTime: 0.2
   _bounceEase: 9
-  deathVFX: {fileID: 8973120841180842829, guid: 8e8aba8780f3e7244874bed1783b92f2,
+  deathVFX: {fileID: 8973120841180842829, guid: 93d4f52871b08914582bc9a14aea1e10,
     type: 3}
   durationOfExplosion: 1
   _shakeCamera: 1
