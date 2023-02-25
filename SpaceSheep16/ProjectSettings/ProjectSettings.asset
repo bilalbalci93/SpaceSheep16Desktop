@@ -769,11 +769,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 0ff706f7-1e04-4bfb-af57-312e8de599a7
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: SpaceSheep16
+  organizationId: bilal_balci
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
